@@ -286,7 +286,7 @@
         "lines": [
           1,
           1,
-          4,
+          5,
           null,
           null
         ]
@@ -339,12 +339,32 @@
           3,
           null,
           null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          null,
+          1,
+          1,
+          null,
           null
         ]
       },
       "/Users/emilyport/Desktop/Turing/mod_3/projects/rails-engine/app/controllers/api/v1/merchants_controller.rb": {
         "lines": [
           1,
+          1,
+          1,
+          null,
+          null,
           1,
           1,
           null,
@@ -358,6 +378,6 @@
         ]
       }
     },
-    "timestamp": 1670281101
+    "timestamp": 1670281553
   }
 }
