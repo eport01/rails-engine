@@ -83,6 +83,8 @@ describe "Items API endpoints" do
     merchant_id = create(:merchant).id 
     id = create(:item).id 
     previous_name = Item.last.name 
+    previous_merchant_id = Item.last.merchant_id
+    
     item_params = {name: "More Chocolate"}
 
     headers = {"CONTENT_TYPE" => "application/json"}
