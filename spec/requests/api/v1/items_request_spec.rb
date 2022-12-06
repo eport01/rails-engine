@@ -55,4 +55,27 @@ describe "Items API endpoints" do
     expect(item[:attributes][:merchant_id]).to be_a(Integer)
 
   end
+
+  it "can create an item" do 
+
+    merchant_id = create(:merchant).id 
+
+    item_params = {
+      name: 'Chocolate',
+      description: 'Yummy!',
+      unit_price: 3.50,
+      merchant_id: merchant_id
+    }
+
+    headers = {"CONTENT_TYPE" => "application/json"} 
+
+    post "/api/v1/items", headers: headers, params: JSON.generate(item: item_params)
+
+    item = Item.last 
+    expect(response).to be_successful
+    expect(item.name).to eq(item_params[:name])
+    expect(item.description).to eq(item_params[:description])
+    expect(item.unit_price).to eq(item_params[:unit_price])
+    expect(item.merchant_id).to eq(item_params[:merchant_id])
+  end
 end
