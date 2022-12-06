@@ -39,7 +39,6 @@ describe "Merchants API endpoints" do
   it "can get all items for a given merchant ID" do 
     id = create(:merchant).id 
     get "/api/v1/merchants/#{id}/items"
-    # require 'pry'; binding.pry
 
   end
 end
