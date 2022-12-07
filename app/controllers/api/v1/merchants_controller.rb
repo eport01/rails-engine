@@ -1,9 +1,6 @@
 class Api::V1::MerchantsController < ApplicationController 
   def index 
-
     render json: MerchantSerializer.new(Merchant.all) 
-
-    # require 'pry'; binding.pry
   end
 
   def show 
@@ -12,5 +9,13 @@ class Api::V1::MerchantsController < ApplicationController
     else
       render json: {error: "no merchant id"}, status: 404
     end 
+  end
+
+  def find 
+    if params[:name]
+      render json: MerchantSerializer.new(Merchant.where(name: params[:name]).order(:name)[0])
+    else
+      render json: {error: "no merchant name exists"}, status: 404
+    end
   end
 end

@@ -71,4 +71,22 @@ describe "Merchants API endpoints" do
 
     end
   end
+
+  describe "non-RESTful search endpoints" do 
+    it 'find a single merchant which matches a search term' do 
+      
+      create_list(:merchant, 3)
+
+      get "/api/v1/merchants/find?name=#{Merchant.first.name}"
+      merchant = JSON.parse(response.body, symbolize_names: true)[:data]
+
+      expect(response).to be_successful
+    
+      expect(merchant).to have_key(:id)
+      expect(merchant[:id].to_i).to eq(Merchant.first.id)
+    # require 'pry'; binding.pry
+      expect(merchant[:attributes]).to have_key(:name)
+      expect(merchant[:attributes][:name]).to eq(Merchant.first.name)
+    end
+  end
 end
