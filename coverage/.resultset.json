@@ -330,6 +330,9 @@
         "lines": [
           1,
           1,
+          1,
+          1,
+          null,
           null
         ]
       },
@@ -351,6 +354,8 @@
       },
       "/Users/emilyport/Desktop/Turing/mod_3/projects/rails-engine/app/models/merchant.rb": {
         "lines": [
+          1,
+          1,
           1,
           1,
           null
@@ -663,8 +668,6 @@
           null,
           null,
           1,
-          null,
-          null,
           2,
           1,
           null,
@@ -675,6 +678,6 @@
         ]
       }
     },
-    "timestamp": 1670428351
+    "timestamp": 1670431905
   }
 }
