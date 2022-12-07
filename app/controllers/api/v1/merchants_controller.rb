@@ -7,10 +7,10 @@ class Api::V1::MerchantsController < ApplicationController
   end
 
   def show 
-    #for merchant items: 
-      # render json: ItemSerializer.new(Merchant.find(params[:id]).items)
-      # require 'pry'; binding.pry
-    #to get one merchant  
-    render json: MerchantSerializer.new(Merchant.find(params[:id]))
+    if Merchant.exists?(params[:id])
+      render json: MerchantSerializer.new(Merchant.find(params[:id]))
+    else
+      render json: {error: "no merchant id"}, status: 404
+    end 
   end
 end

@@ -10,6 +10,10 @@ Rails.application.routes.draw do
       get "merchants/:id/items", to: "merchant_items#index"
       get "/items/:id/merchant", to: "merchant_items#show"
 
+      #nonrestful routes:
+
+      
+
     end
   end
 end

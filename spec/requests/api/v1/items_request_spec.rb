@@ -131,4 +131,6 @@ describe "Items API endpoints" do
     expect(items_merchant[:attributes][:name]).to be_a(String)
   end
 
+  
+
 end
