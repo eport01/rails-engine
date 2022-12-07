@@ -1,13 +1,12 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/emilyport/Desktop/Turing/mod_3/projects/rails-engine/spec/models/invoice_item_spec.rb": {
+      "/Users/emilyport/Desktop/Turing/mod_3/projects/rails-engine/spec/models/customer_spec.rb": {
         "lines": [
           1,
           null,
           1,
           1,
-          2,
           2,
           2,
           null,
@@ -337,6 +336,34 @@
           null
         ]
       },
+      "/Users/emilyport/Desktop/Turing/mod_3/projects/rails-engine/app/models/customer.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/emilyport/Desktop/Turing/mod_3/projects/rails-engine/app/models/application_record.rb": {
+        "lines": [
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/emilyport/Desktop/Turing/mod_3/projects/rails-engine/spec/models/invoice_item_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          2,
+          2,
+          2,
+          null,
+          null
+        ]
+      },
       "/Users/emilyport/Desktop/Turing/mod_3/projects/rails-engine/app/models/invoice_item.rb": {
         "lines": [
           1,
@@ -346,8 +373,24 @@
           null
         ]
       },
-      "/Users/emilyport/Desktop/Turing/mod_3/projects/rails-engine/app/models/application_record.rb": {
+      "/Users/emilyport/Desktop/Turing/mod_3/projects/rails-engine/spec/models/invoice_spec.rb": {
         "lines": [
+          1,
+          null,
+          1,
+          1,
+          2,
+          2,
+          null,
+          2,
+          null,
+          null
+        ]
+      },
+      "/Users/emilyport/Desktop/Turing/mod_3/projects/rails-engine/app/models/invoice.rb": {
+        "lines": [
+          1,
+          1,
           1,
           1,
           null
@@ -690,21 +733,6 @@
           null
         ]
       },
-      "/Users/emilyport/Desktop/Turing/mod_3/projects/rails-engine/app/models/invoice.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          null
-        ]
-      },
-      "/Users/emilyport/Desktop/Turing/mod_3/projects/rails-engine/app/models/customer.rb": {
-        "lines": [
-          1,
-          null,
-          null
-        ]
-      },
       "/Users/emilyport/Desktop/Turing/mod_3/projects/rails-engine/app/controllers/api/v1/items_controller.rb": {
         "lines": [
           1,
@@ -829,6 +857,6 @@
         ]
       }
     },
-    "timestamp": 1670447649
+    "timestamp": 1670449141
   }
 }
