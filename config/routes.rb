@@ -4,10 +4,23 @@ Rails.application.routes.draw do
   namespace :api do 
     namespace :v1 do 
       resources :merchants do 
+        collection do 
+          get :find 
+        end
       end
 
-      resources :items 
+      resources :items do 
+        collection do 
+          get :find_all
+        end
+      end
       get "merchants/:id/items", to: "merchant_items#index"
+      get "/items/:id/merchant", to: "merchant_items#show"
+
+      #nonrestful routes:
+
+      
+
     end
   end
 end

@@ -25,8 +25,33 @@ class Api::V1::ItemsController < ApplicationController
   end
 
   def destroy 
-    render json: Item.destroy(params[:id])
+    
+    # render json: Item.destroy(params[:id])
+    @item = Item.find(params[:id])
+    if @item
+      render json: Item.destroy(params[:id])
+      # @item.destroy_empty_invoices
+
+
+    #   render json: {item: item, invoices: invoices}
+      # render json: Item.destroy(params[:id])
+      # render json: Invoice.destroy(params[:id])
+
+      # require 'pry'; binding.pry
+      # @item.destroy_empty_invoices
+      # render json: @item.destroy_empty_invoices
+    else
+      render json: {error: "no item id"}, status: 404
+    end
   end
+
+  # @item = Item.find(params[:id])
+  #if an items invoices only has that item, then destroy
+  # if @item.invoices.empty? 
+  #   render json: Item.destroy(params[:id])
+  # render json: Invoice.destroy(params[:id])
+  # end
+  
 
   private 
   def item_params
