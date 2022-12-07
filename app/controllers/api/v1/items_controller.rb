@@ -22,7 +22,10 @@ class Api::V1::ItemsController < ApplicationController
     else
       render json: {error: "unable to update"}, status: 400
     end
+  end
 
+  def destroy 
+    render json: Item.destroy(params[:id])
   end
 
   private 
