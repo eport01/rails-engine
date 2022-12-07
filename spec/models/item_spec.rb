@@ -20,6 +20,6 @@ RSpec.describe Item, type: :model do
   end
 
   it 'can find all of the invoices with this item' do 
-    require 'pry'; binding.pry
+  
   end
 end

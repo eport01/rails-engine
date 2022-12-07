@@ -36,6 +36,8 @@ group :development, :test do
   gem 'faker'
   gem 'pry'
   gem 'jsonapi-serializer'
+  gem 'shoulda-matchers'
+
 end
 
 group :development do
