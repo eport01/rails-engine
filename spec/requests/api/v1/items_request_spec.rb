@@ -111,4 +111,24 @@ describe "Items API endpoints" do
     expect(Item.count).to eq(0)
     expect{Item.find(item.id)}.to raise_error(ActiveRecord::RecordNotFound)
   end
+
+  it 'returns a 404 response if no item is found' do 
+
+  end
+
+  it 'can return an items merchant based on an item id' do 
+    merchant = create(:merchant) 
+    create_list(:item, 3, merchant: merchant)
+    item = Item.last 
+    get "/api/v1/items/#{item.id}/merchant"
+
+    items_merchant = JSON.parse(response.body, symbolize_names: true)[:data]
+
+    expect(response).to be_successful
+    expect(items_merchant).to have_key(:id)
+    expect(items_merchant[:id].to_i).to eq(merchant.id)
+    expect(items_merchant[:attributes]).to have_key(:name)
+    expect(items_merchant[:attributes][:name]).to be_a(String)
+  end
+
 end
