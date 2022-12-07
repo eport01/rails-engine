@@ -8,7 +8,6 @@ describe "Merchants API endpoints" do
 
     expect(response).to be_successful
     merchants = JSON.parse(response.body, symbolize_names: true)[:data]
-    # require 'pry'; binding.pry
     expect(merchants.count).to eq(3)
 
     merchants.each do |merchant|
