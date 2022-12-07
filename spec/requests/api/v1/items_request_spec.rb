@@ -136,12 +136,8 @@ describe "Items API endpoints" do
 
     expect{Item.find(@item1.id)}.to raise_error(ActiveRecord::RecordNotFound)
 
-
-    # require 'pry'; binding.pry
     expect{Invoice.find(@invoice1.id)}.to raise_error(ActiveRecord::RecordNotFound)
 
-    # require 'pry'; binding.pry
-    # expect(@invoice2.items).to eq([@item2])
   end
 
   it 'returns a 404 response if no item is found' do 
@@ -162,7 +158,5 @@ describe "Items API endpoints" do
     expect(items_merchant[:attributes]).to have_key(:name)
     expect(items_merchant[:attributes][:name]).to be_a(String)
   end
-
-  
 
 end

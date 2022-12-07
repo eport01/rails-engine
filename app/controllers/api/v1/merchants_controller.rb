@@ -13,8 +13,6 @@ class Api::V1::MerchantsController < ApplicationController
 
   def find 
     merchant = Merchant.where("name ILIKE ?", "%#{params[:name]}%").order(:name)[0]
-    # require 'pry'; binding.pry
-    # if params[:name] == "NOMATCH"
     if merchant != nil 
       render json: MerchantSerializer.new(merchant)
     else
