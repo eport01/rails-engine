@@ -33,12 +33,8 @@ class Api::V1::ItemsController < ApplicationController
     if items != nil 
       render json: ItemSerializer.new(items)
     else
-      # require 'pry'; binding.pry
       render json: {data: [error: items]}, status: 200 
-      # require 'pry'; binding.pry
-
     end
-    # require 'pry'; binding.pry
   end
 
   private 

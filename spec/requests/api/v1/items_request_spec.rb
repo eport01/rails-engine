@@ -164,12 +164,29 @@ describe "Items API endpoints" do
       item3 = create(:item, name: 'milk chocolate')
       item4 = create(:item, name: 'jolly ranchers')
 
-      get "/api/v1/items/find_all?name=#{"ch"}"
+      get "/api/v1/items/find_all?name=#{"chocolate"}"
 
-      merchant = JSON.parse(response.body, symbolize_names: true)[:data]
+      items = JSON.parse(response.body, symbolize_names: true)[:data]
       expect(response).to be_successful
-      expect(response.count).to eq(3)
-      # require 'pry'; binding.pry
+      expect(items.count).to eq(3)
+      items.each do |item|
+        expect(item[:id].to_i).to be_an(Integer)
+        expect(item[:attributes][:name]).to be_an(String)
+        expect(item[:attributes][:description]).to be_an(String)
+        expect(item[:attributes][:unit_price]).to be_an(Float)
+        expect(item[:attributes][:merchant_id]).to be_an(Integer)
+
+        expect(item).to_not eq(item4)
+      end
+    end
+
+    it 'returns an empty array and status 200 if no fragment matched' do 
+      item1 = create(:item, name: 'chocolate')
+      get "/api/v1/items/find_all?name=#{"j"}"
+      item = JSON.parse(response.body, symbolize_names: true)
+      expect(response).to have_http_status 200
+      expect(item[:data]).to eq([])
+
     end
   end
 
