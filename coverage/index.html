@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2022-12-08T10:46:52-07:00">2022-12-08T10:46:52-07:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2022-12-08T12:06:44-07:00">2022-12-08T12:06:44-07:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -23,14 +23,14 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="green">
-  98.11%
+  98.54%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         1.69
+         1.74
        </span>
     </span> hits/line
     )
@@ -43,11 +43,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>475</b> relevant lines,
-    <span class="green"><b>466</b> lines covered</span> and
-    <span class="red"><b>9</b> lines missed. </span>
+    <b>480</b> relevant lines,
+    <span class="green"><b>473</b> lines covered</span> and
+    <span class="red"><b>7</b> lines missed. </span>
     (<span class="green">
-  98.11%
+  98.54%
 </span>
 )
   </div>
@@ -72,12 +72,12 @@
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#ebf6cf24fb9e4dd79b94ce54ac5abe61e7ebfdd6" class="src_link" title="app/controllers/api/v1/items_controller.rb">app/controllers/api/v1/items_controller.rb</a></td>
-            <td class="yellow strong cell--number t-file__coverage">88.37 %</td>
-            <td class="cell--number">87</td>
-            <td class="cell--number">43</td>
-            <td class="cell--number">38</td>
+            <td class="green strong cell--number t-file__coverage">90.38 %</td>
+            <td class="cell--number">95</td>
+            <td class="cell--number">52</td>
+            <td class="cell--number">47</td>
             <td class="cell--number">5</td>
-            <td class="cell--number">1.70</td>
+            <td class="cell--number">2.04</td>
             
           </tr>
         
@@ -160,12 +160,12 @@
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#e8a9df8fef48ae7922da05fae079c1b3597cf997" class="src_link" title="app/models/item.rb">app/models/item.rb</a></td>
-            <td class="yellow strong cell--number t-file__coverage">84.62 %</td>
+            <td class="green strong cell--number t-file__coverage">100.00 %</td>
             <td class="cell--number">24</td>
-            <td class="cell--number">13</td>
-            <td class="cell--number">11</td>
-            <td class="cell--number">2</td>
-            <td class="cell--number">1.00</td>
+            <td class="cell--number">9</td>
+            <td class="cell--number">9</td>
+            <td class="cell--number">0</td>
+            <td class="cell--number">1.22</td>
             
           </tr>
         
@@ -183,7 +183,7 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#f1c782f378d27c6f7f65ac34daa7041f7ef73c43" class="src_link" title="app/serializers/item_serializer.rb">app/serializers/item_serializer.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">6</td>
+            <td class="cell--number">10</td>
             <td class="cell--number">3</td>
             <td class="cell--number">3</td>
             <td class="cell--number">0</td>
@@ -326,7 +326,7 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#692cfb319dbf5477e4f9639a07ac7a9d4a83b2ae" class="src_link" title="config/routes.rb">config/routes.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">26</td>
+            <td class="cell--number">22</td>
             <td class="cell--number">11</td>
             <td class="cell--number">11</td>
             <td class="cell--number">0</td>
@@ -487,8 +487,8 @@
   <div class="header">
     <h3>app/controllers/api/v1/items_controller.rb</h3>
     <h4>
-      <span class="yellow">
-  88.37%
+      <span class="green">
+  90.38%
 </span>
 
       lines covered
@@ -497,8 +497,8 @@
     
 
     <div class="t-line-summary">
-      <b>43</b> relevant lines.
-      <span class="green"><b>38</b> lines covered</span> and
+      <b>52</b> relevant lines.
+      <span class="green"><b>47</b> lines covered</span> and
       <span class="red"><b>5</b> lines missed.</span>
     </div>
 
@@ -912,29 +912,29 @@
 
             
 
-            <code class="ruby">    if params[:min_price] &amp;&amp; params[:name] || params[:max_price] &amp;&amp; params[:name]</code>
+            <code class="ruby">    name = params[:name]</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="38">
-            
-            
-
+          <li class="covered" data-hits="8" data-linenumber="38">
+            <span class="hits">8</span>
             
 
-            <code class="ruby"></code>
+            
+
+            <code class="ruby">    min_price = params[:min_price]</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="39">
-            <span class="hits">2</span>
+          <li class="covered" data-hits="8" data-linenumber="39">
+            <span class="hits">8</span>
             
 
             
 
-            <code class="ruby">      render json: {error: &quot;Can&#39;t send both name and price&quot;}, status: 400 </code>
+            <code class="ruby">    max_price = params[:max_price]</code>
           </li>
         </div>
       
@@ -950,24 +950,24 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="6" data-linenumber="41">
-            <span class="hits">6</span>
+          <li class="covered" data-hits="8" data-linenumber="41">
+            <span class="hits">8</span>
             
 
             
 
-            <code class="ruby">    elsif params[:name]</code>
+            <code class="ruby">    if min_price &amp;&amp; name || max_price &amp;&amp; name || max_price &amp;&amp; min_price</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="42">
-            <span class="hits">2</span>
+          <li class="never" data-hits="" data-linenumber="42">
+            
             
 
             
 
-            <code class="ruby">      items = Item.where(&quot;name ILIKE ?&quot;, &quot;%#{params[:name]}%&quot;)</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -978,40 +978,40 @@
 
             
 
-            <code class="ruby">      if items != nil </code>
+            <code class="ruby">      render json: {error: &quot;Can&#39;t send both name and price&quot;}, status: 400 </code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="44">
+          <li class="covered" data-hits="6" data-linenumber="44">
+            <span class="hits">6</span>
+            
+
+            
+
+            <code class="ruby">    elsif name</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="45">
             <span class="hits">2</span>
             
 
             
 
-            <code class="ruby">        render json: ItemSerializer.new(items)</code>
+            <code class="ruby">      self.items_by_name(name)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="45">
+          <li class="never" data-hits="" data-linenumber="46">
             
             
 
             
 
-            <code class="ruby">      else</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="46">
-            
-            
-
-            
-
-            <code class="ruby">        render json: {data: [error: items]}, status: 200 </code>
+            <code class="ruby">    # elsif params[:min_price] &amp;&amp; params[:max_price]</code>
           </li>
         </div>
       
@@ -1022,7 +1022,7 @@
 
             
 
-            <code class="ruby">      end</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -1033,188 +1033,45 @@
 
             
 
-            <code class="ruby">    elsif params[:min_price] &amp;&amp; params[:max_price]</code>
+            <code class="ruby">    elsif min_price</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="49">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="4" data-linenumber="50">
-            <span class="hits">4</span>
-            
-
-            
-
-            <code class="ruby">    elsif params[:min_price]</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="51">
-            
-            
-
-            
-
-            <code class="ruby">      </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="3" data-linenumber="52">
+          <li class="covered" data-hits="3" data-linenumber="49">
             <span class="hits">3</span>
             
 
             
 
-            <code class="ruby">      if params[:min_price].to_i &gt; 0 </code>
+            <code class="ruby">      self.items_above_price(min_price)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="53">
+          <li class="covered" data-hits="1" data-linenumber="50">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">        items = Item.where(&quot;unit_price &gt; ?&quot;, &quot;#{params[:min_price]}&quot;)</code>
+            <code class="ruby">    elsif max_price</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="54">
+          <li class="covered" data-hits="1" data-linenumber="51">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">        render json: ItemSerializer.new(items)</code>
+            <code class="ruby">      self.items_below_price(max_price)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="55">
-            
-            
-
-            
-
-            <code class="ruby">      else</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="2" data-linenumber="56">
-            <span class="hits">2</span>
-            
-
-            
-
-            <code class="ruby">        render json: {errors: &quot;Min price has to be above 0&quot;}, status: 400 </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="57">
-            
-            
-
-            
-
-            <code class="ruby">      end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="58">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    elsif params[:max_price]</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="59">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">      if params[:max_price].to_i &gt; 0</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="60">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        items = Item.where(&quot;unit_price &lt; ?&quot;, &quot;#{params[:max_price]}&quot;)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="61">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        render json: ItemSerializer.new(items)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="62">
-            
-            
-
-            
-
-            <code class="ruby">      else</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="63">
-            
-            
-
-            
-
-            <code class="ruby">        render json: {errors: &quot;Max price has to be above 0&quot;}, status: 400 </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="64">
-            
-            
-
-            
-
-            <code class="ruby">      end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="65">
+          <li class="never" data-hits="" data-linenumber="52">
             
             
 
@@ -1225,7 +1082,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="66">
+          <li class="missed" data-hits="0" data-linenumber="53">
             
             
 
@@ -1236,18 +1093,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="67">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="68">
+          <li class="never" data-hits="" data-linenumber="54">
             
             
 
@@ -1258,18 +1104,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="69">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="70">
+          <li class="never" data-hits="" data-linenumber="55">
             
             
 
@@ -1280,7 +1115,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="71">
+          <li class="never" data-hits="" data-linenumber="56">
             
             
 
@@ -1291,24 +1126,189 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="72">
+          <li class="covered" data-hits="1" data-linenumber="57">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">  def min_price</code>
+            <code class="ruby">  def items_above_price(params_variable)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="73">
+          <li class="covered" data-hits="3" data-linenumber="58">
+            <span class="hits">3</span>
+            
+
+            
+
+            <code class="ruby">    min_price = params[:min_price]</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="3" data-linenumber="59">
+            <span class="hits">3</span>
+            
+
+            
+
+            <code class="ruby">    if min_price.to_i &gt; 0 </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="60">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      items = Item.where(&quot;unit_price &gt; ?&quot;, &quot;#{min_price}&quot;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="61">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      render json: ItemSerializer.new(items)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="62">
+            
+            
+
+            
+
+            <code class="ruby">    else</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="63">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">      render json: {errors: &quot;Min price has to be above 0&quot;}, status: 400 </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="64">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="65">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="66">
             
             
 
             
 
             <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="67">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  def items_below_price(params_variable)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="68">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    max_price = params[:max_price]</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="69">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    if max_price.to_i &gt; 0</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="70">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      items = Item.where(&quot;unit_price &lt; ?&quot;, &quot;#{max_price}&quot;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="71">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      render json: ItemSerializer.new(items)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="72">
+            
+            
+
+            
+
+            <code class="ruby">    else</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="73">
+            
+            
+
+            
+
+            <code class="ruby">      render json: {errors: &quot;Max price has to be above 0&quot;}, status: 400 </code>
           </li>
         </div>
       
@@ -1319,7 +1319,7 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -1330,45 +1330,12 @@
 
             
 
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="76">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">  def max_price</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="77">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="78">
-            
-            
-
-            
-
             <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="79">
+          <li class="never" data-hits="" data-linenumber="76">
             
             
 
@@ -1379,24 +1346,57 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="80">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="77">
+            <span class="hits">1</span>
             
 
-            <code class="ruby"></code>
+            
+
+            <code class="ruby">  def items_by_name(params_variable)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="81">
+          <li class="covered" data-hits="2" data-linenumber="78">
+            <span class="hits">2</span>
             
+
+            
+
+            <code class="ruby">    name = params[:name]</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="79">
+            <span class="hits">2</span>
             
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">    items = Item.where(&quot;name ILIKE ?&quot;, &quot;%#{name}%&quot;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="80">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">    if items != nil </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="81">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">      render json: ItemSerializer.new(items)</code>
           </li>
         </div>
       
@@ -1407,40 +1407,40 @@
 
             
 
+            <code class="ruby">    else</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="83">
+            
+            
+
+            
+
+            <code class="ruby">      render json: {data: [error: items]}, status: 200 </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="84">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="85">
+            
+            
+
+            
+
             <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="83">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">  private </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="84">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">  def item_params</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="5" data-linenumber="85">
-            <span class="hits">5</span>
-            
-
-            
-
-            <code class="ruby">    params.require(:item).permit(:name, :description, :unit_price, :merchant_id)</code>
           </li>
         </div>
       
@@ -1457,6 +1457,94 @@
       
         <div>
           <li class="never" data-hits="" data-linenumber="87">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="88">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="89">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="90">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="91">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  private </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="92">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  def item_params</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="5" data-linenumber="93">
+            <span class="hits">5</span>
+            
+
+            
+
+            <code class="ruby">    params.require(:item).permit(:name, :description, :unit_price, :merchant_id)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="94">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="95">
             
             
 
@@ -2341,8 +2429,8 @@
   <div class="header">
     <h3>app/models/item.rb</h3>
     <h4>
-      <span class="yellow">
-  84.62%
+      <span class="green">
+  100.0%
 </span>
 
       lines covered
@@ -2351,9 +2439,9 @@
     
 
     <div class="t-line-summary">
-      <b>13</b> relevant lines.
-      <span class="green"><b>11</b> lines covered</span> and
-      <span class="red"><b>2</b> lines missed.</span>
+      <b>9</b> relevant lines.
+      <span class="green"><b>9</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
     </div>
 
     
@@ -2518,24 +2606,24 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="15">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="15">
+            
             
 
             
 
-            <code class="ruby">  def items_above_price(min_price) </code>
+            <code class="ruby">  # def items_above_price(min_price) </code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="16">
+          <li class="never" data-hits="" data-linenumber="16">
             
             
 
             
 
-            <code class="ruby">    Item.where(&quot;unit_price &gt; ?&quot;, &quot;#{min_price}}&quot;)  </code>
+            <code class="ruby">  #   Item.all.where(&quot;unit_price &gt; ?&quot;, &quot;#{min_price}&quot;)  </code>
           </li>
         </div>
       
@@ -2546,7 +2634,7 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">  # end</code>
           </li>
         </div>
       
@@ -2562,24 +2650,24 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="19">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="19">
+            
             
 
             
 
-            <code class="ruby">  def items_below_price(max_price)</code>
+            <code class="ruby">  # def items_below_price(max_price)</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="20">
+          <li class="never" data-hits="" data-linenumber="20">
             
             
 
             
 
-            <code class="ruby">    Item.where(&quot;unit_price &lt; ?&quot;, &quot;#{max_price}}&quot;)  </code>
+            <code class="ruby">  #   Item.all.where(&quot;unit_price &lt; ?&quot;, &quot;#{max_price}&quot;)  </code>
           </li>
         </div>
       
@@ -2590,7 +2678,7 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">  # end</code>
           </li>
         </div>
       
@@ -2801,6 +2889,50 @@
       
         <div>
           <li class="never" data-hits="" data-linenumber="6">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="7">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="8">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="9">
+            
+            
+
+            
+
+            <code class="ruby">  </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="10">
             
             
 
@@ -5244,7 +5376,7 @@
 
             
 
-            <code class="ruby">      #nonrestful routes:</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -5255,56 +5387,12 @@
 
             
 
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="22">
-            
-            
-
-            
-
-            <code class="ruby">      </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="23">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="24">
-            
-            
-
-            
-
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="25">
-            
-            
-
-            
-
             <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="26">
+          <li class="never" data-hits="" data-linenumber="22">
             
             
 

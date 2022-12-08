@@ -5,7 +5,6 @@ class Api::V1::ItemsController < ApplicationController
 
   def show 
     if Item.exists?(params[:id])
-      #  require 'pry'; binding.pry
       render json: ItemSerializer.new(Item.find(params[:id]))
     else
       render json: {error: "no item id"}, status: 404
@@ -34,46 +33,51 @@ class Api::V1::ItemsController < ApplicationController
   end  
 
   def find_all 
-    if params[:min_price] && params[:name] || params[:max_price] && params[:name]
+    name = params[:name]
+    min_price = params[:min_price]
+    max_price = params[:max_price]
 
+    if min_price && name || max_price && name || max_price && min_price
       render json: {error: "Can't send both name and price"}, status: 400 
-
-    elsif params[:name]
-      items = Item.where("name ILIKE ?", "%#{params[:name]}%")
-      if items != nil 
-        render json: ItemSerializer.new(items)
-      else
-        render json: {data: [error: items]}, status: 200 
-      end
-    elsif params[:min_price] && params[:max_price]
-
-    elsif params[:min_price]
-      
-      if params[:min_price].to_i > 0 
-        items = Item.where("unit_price > ?", "#{params[:min_price]}")
-        render json: ItemSerializer.new(items)
-      else
-        render json: {errors: "Min price has to be above 0"}, status: 400 
-      end
-    elsif params[:max_price]
-      if params[:max_price].to_i > 0
-        items = Item.where("unit_price < ?", "#{params[:max_price]}")
-        render json: ItemSerializer.new(items)
-      else
-        render json: {errors: "Max price has to be above 0"}, status: 400 
-      end
+    elsif name
+      self.items_by_name(name)
+    elsif min_price
+      self.items_above_price(min_price)
+    elsif max_price
+      self.items_below_price(max_price)
     else 
       render json: {error: "can't send empty params"}, status: 400 
-
     end
-
   end
 
-  def min_price
-
+  def items_above_price(params_variable)
+    min_price = params[:min_price]
+    if min_price.to_i > 0 
+      items = Item.where("unit_price > ?", "#{min_price}")
+      render json: ItemSerializer.new(items)
+    else
+      render json: {errors: "Min price has to be above 0"}, status: 400 
+    end
   end
 
-  def max_price
+  def items_below_price(params_variable)
+    max_price = params[:max_price]
+    if max_price.to_i > 0
+      items = Item.where("unit_price < ?", "#{max_price}")
+      render json: ItemSerializer.new(items)
+    else
+      render json: {errors: "Max price has to be above 0"}, status: 400 
+    end
+  end
+
+  def items_by_name(params_variable)
+    name = params[:name]
+    items = Item.where("name ILIKE ?", "%#{name}%")
+    if items != nil 
+      render json: ItemSerializer.new(items)
+    else
+      render json: {data: [error: items]}, status: 200 
+    end
 
   end
 
