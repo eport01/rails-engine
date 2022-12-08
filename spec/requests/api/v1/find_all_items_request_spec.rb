@@ -106,6 +106,21 @@ describe 'find all items by max price' do
     get "/api/v1/items/find_all?name=#{item1.name}&max_price=#{5.00}"
     expect(response).to have_http_status 400
   end
+
+ 
+end
+
+describe 'find all items edge cases' do 
+  it 'edge case, no param given' do 
+    get "/api/v1/items/find_all"
+    expect(response).to have_http_status 400
+
+  end
+
+  it 'edge case, name fragment is empty' do 
+    get "/api/v1/items/find_all?name="
+    expect(response).to have_http_status 400
+  end
 end
 
 

@@ -37,7 +37,7 @@ class Api::V1::ItemsController < ApplicationController
 
     if @min_price && @name || @max_price && @name || @max_price && @min_price
       render json: {error: "Error!"}, status: 400 
-    elsif @name
+    elsif @name && @name != ""
       self.items_by_name(@name)
     elsif @min_price
       self.items_above_price(@min_price)
