@@ -107,3 +107,5 @@ describe 'find all items by max price' do
     expect(response).to have_http_status 400
   end
 end
+
+
