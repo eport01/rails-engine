@@ -22,4 +22,11 @@ describe "non-RESTful search endpoints to find one merchant" do
 
     expect(merchant[:id]).to eq(nil)
   end
+
+  it 'edge case no param given, status 400' do 
+    get "/api/v1/merchants/find"
+    expect(response).to have_http_status 400
+
+
+  end
 end
