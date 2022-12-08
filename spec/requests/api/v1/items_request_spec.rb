@@ -124,8 +124,6 @@ describe "Items API endpoints" do
     @invoice_item1 = InvoiceItem.create!(quantity: 1, unit_price: 5000, item_id: @item1.id, invoice_id: @invoice1.id)
     @invoice_item2 = InvoiceItem.create!(quantity: 1, unit_price: 5000, item_id: @item1.id, invoice_id: @invoice2.id)
     @invoice_item3 = InvoiceItem.create!(quantity: 1, unit_price: 5000, item_id: @item2.id, invoice_id: @invoice2.id)
-
-    # require 'pry'; binding.pry
     
     expect(Item.count).to eq(2)
     expect(@invoice1.items).to eq([@item1])
@@ -157,6 +155,22 @@ describe "Items API endpoints" do
     expect(items_merchant[:id].to_i).to eq(merchant.id)
     expect(items_merchant[:attributes]).to have_key(:name)
     expect(items_merchant[:attributes][:name]).to be_a(String)
+  end
+
+  describe 'unrestful routes, find all items by name fragment' do 
+    it 'returns all items through search criteria' do 
+      item1 = create(:item, name: 'chocolate')
+      item2 = create(:item, name: 'dark chocolate')
+      item3 = create(:item, name: 'milk chocolate')
+      item4 = create(:item, name: 'jolly ranchers')
+
+      get "/api/v1/items/find_all?name=#{"ch"}"
+
+      merchant = JSON.parse(response.body, symbolize_names: true)[:data]
+      expect(response).to be_successful
+      expect(response.count).to eq(3)
+      # require 'pry'; binding.pry
+    end
   end
 
 end
