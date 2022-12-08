@@ -14,12 +14,11 @@ class Item < ApplicationRecord
   end
 
   def items_above_price(min_price) 
-    Item.where("unit_price < ?", "#{min_price}}")  
-    require 'pry'; binding.pry
+    Item.where("unit_price > ?", "#{min_price}}")  
   end
 
   def items_below_price(max_price)
-
+    Item.where("unit_price < ?", "#{max_price}}")  
   end
 
 

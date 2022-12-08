@@ -195,8 +195,16 @@ describe "Items API endpoints" do
       item3 = create(:item, unit_price: 3.50)
 
       get "/api/v1/items/find_all?min_price=#{5.00}"
+      items = JSON.parse(response.body, symbolize_names: true)[:data]
+      items.each do |item|
+        expect(item[:id].to_i).to be_an(Integer)
+        expect(item[:attributes][:name]).to be_an(String)
+        expect(item[:attributes][:description]).to be_an(String)
+        expect(item[:attributes][:unit_price]).to be_an(Float)
+        expect(item[:attributes][:merchant_id]).to be_an(Integer)
 
-      # require 'pry'; binding.pry
+        expect(item).to_not eq(item3)
+      end
     end
   end
 
