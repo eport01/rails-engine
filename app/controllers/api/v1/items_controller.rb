@@ -33,22 +33,35 @@ class Api::V1::ItemsController < ApplicationController
   end  
 
   def find_all 
-    name = params[:name]
-    min_price = params[:min_price]
-    max_price = params[:max_price]
+    params_variables
+    # name = params[:name]
+    # min_price = params[:min_price]
+    # max_price = params[:max_price]
 
-    if min_price && name || max_price && name || max_price && min_price
-      render json: {error: "Can't send both name and price"}, status: 400 
-    elsif name
-      self.items_by_name(name)
-    elsif min_price
-      self.items_above_price(min_price)
-    elsif max_price
-      self.items_below_price(max_price)
+    if @min_price && @name || @max_price && @name || @max_price && @min_price
+      render json: {error: "Error!"}, status: 400 
+    elsif @name
+      self.items_by_name(@name)
+    elsif @min_price
+      self.items_above_price(@min_price)
+    elsif @max_price
+      self.items_below_price(@max_price)
     else 
-      render json: {error: "can't send empty params"}, status: 400 
+      render json: {error: "Error!"}, status: 400 
     end
   end
+
+  private 
+  def item_params
+    params.require(:item).permit(:name, :description, :unit_price, :merchant_id)
+  end
+
+  def params_variables 
+    @name = params[:name]
+    @min_price = params[:min_price]
+    @max_price = params[:max_price]
+  end
+
 
   def items_above_price(params_variable)
     min_price = params[:min_price]
@@ -56,7 +69,7 @@ class Api::V1::ItemsController < ApplicationController
       items = Item.where("unit_price > ?", "#{min_price}")
       render json: ItemSerializer.new(items)
     else
-      render json: {errors: "Min price has to be above 0"}, status: 400 
+      render json: {errors: "Error!"}, status: 400 
     end
   end
 
@@ -66,7 +79,7 @@ class Api::V1::ItemsController < ApplicationController
       items = Item.where("unit_price < ?", "#{max_price}")
       render json: ItemSerializer.new(items)
     else
-      render json: {errors: "Max price has to be above 0"}, status: 400 
+      render json: {errors: "Error!"}, status: 400 
     end
   end
 
@@ -78,14 +91,5 @@ class Api::V1::ItemsController < ApplicationController
     else
       render json: {data: [error: items]}, status: 200 
     end
-
-  end
-
-
-
-
-  private 
-  def item_params
-    params.require(:item).permit(:name, :description, :unit_price, :merchant_id)
   end
 end
