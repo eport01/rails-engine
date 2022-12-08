@@ -188,6 +188,18 @@ describe "Items API endpoints" do
       expect(item[:data]).to eq([])
 
     end
+
+    it 'can find all items based on a min price' do 
+      item1 = create(:item, unit_price: 15.50)
+      item2 = create(:item, unit_price: 30.00)
+      item3 = create(:item, unit_price: 3.50)
+
+      get "/api/v1/items/find_all?min_price=#{5.00}"
+
+      # require 'pry'; binding.pry
+    end
   end
+
+
 
 end

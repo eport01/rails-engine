@@ -29,13 +29,26 @@ class Api::V1::ItemsController < ApplicationController
   end  
 
   def find_all 
-    items = Item.where("name ILIKE ?", "%#{params[:name]}%")
-    if items != nil 
+    if params[:name]
+      items = Item.where("name ILIKE ?", "%#{params[:name]}%")
+      if items != nil 
+        render json: ItemSerializer.new(items)
+      else
+        render json: {data: [error: items]}, status: 200 
+      end
+    elsif params[:min_price]
+      items = Item.where("unit_price > ?", "#{params[:min_price]}")
       render json: ItemSerializer.new(items)
-    else
-      render json: {data: [error: items]}, status: 200 
+    elsif params[:max_price]
+      items = Item.where("unit_price < ?", "#{params[:max_price]}")
+      render json: ItemSerializer.new(items)
+    else 
     end
+
   end
+
+
+
 
   private 
   def item_params
