@@ -124,8 +124,6 @@ describe "Items API endpoints" do
     @invoice_item1 = InvoiceItem.create!(quantity: 1, unit_price: 5000, item_id: @item1.id, invoice_id: @invoice1.id)
     @invoice_item2 = InvoiceItem.create!(quantity: 1, unit_price: 5000, item_id: @item1.id, invoice_id: @invoice2.id)
     @invoice_item3 = InvoiceItem.create!(quantity: 1, unit_price: 5000, item_id: @item2.id, invoice_id: @invoice2.id)
-
-    # require 'pry'; binding.pry
     
     expect(Item.count).to eq(2)
     expect(@invoice1.items).to eq([@item1])
@@ -158,5 +156,8 @@ describe "Items API endpoints" do
     expect(items_merchant[:attributes]).to have_key(:name)
     expect(items_merchant[:attributes][:name]).to be_a(String)
   end
+
+  
+
 
 end

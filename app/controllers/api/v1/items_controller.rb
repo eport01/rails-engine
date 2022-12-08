@@ -1,11 +1,6 @@
 class Api::V1::ItemsController < ApplicationController
   def index 
-    # if params[:merchant_id]
-    #   render json: ItemSerializer.new(Item.where(merchant_id: params[:merchant_id]))
-    # else
-      render json: ItemSerializer.new(Item.all) 
-    # end
-    # require 'pry'; binding.pry
+    render json: ItemSerializer.new(Item.all) 
   end
 
   def show 
@@ -25,33 +20,60 @@ class Api::V1::ItemsController < ApplicationController
   end
 
   def destroy 
-    
-    # render json: Item.destroy(params[:id])
     @item = Item.find(params[:id])
     if @item
       render json: Item.destroy(params[:id])
-      # @item.destroy_empty_invoices
-
-
-    #   render json: {item: item, invoices: invoices}
-      # render json: Item.destroy(params[:id])
-      # render json: Invoice.destroy(params[:id])
-
-      # require 'pry'; binding.pry
-      # @item.destroy_empty_invoices
-      # render json: @item.destroy_empty_invoices
     else
       render json: {error: "no item id"}, status: 404
     end
+  end  
+
+  def find_all 
+    if params[:min_price] && params[:name] || params[:max_price] && params[:name]
+
+      render json: {error: "Can't send both name and price"}, status: 400 
+
+    elsif params[:name]
+      items = Item.where("name ILIKE ?", "%#{params[:name]}%")
+      if items != nil 
+        render json: ItemSerializer.new(items)
+      else
+        render json: {data: [error: items]}, status: 200 
+      end
+    elsif params[:min_price] && params[:max_price]
+
+    elsif params[:min_price]
+      
+      if params[:min_price].to_i > 0 
+        items = Item.where("unit_price > ?", "#{params[:min_price]}")
+        render json: ItemSerializer.new(items)
+      else
+        render json: {errors: "Min price has to be above 0"}, status: 400 
+      end
+    elsif params[:max_price]
+      if params[:max_price].to_i > 0
+        items = Item.where("unit_price < ?", "#{params[:max_price]}")
+        render json: ItemSerializer.new(items)
+      else
+        render json: {errors: "Max price has to be above 0"}, status: 400 
+      end
+    else 
+      render json: {error: "can't send empty params"}, status: 400 
+
+    end
+
   end
 
-  # @item = Item.find(params[:id])
-  #if an items invoices only has that item, then destroy
-  # if @item.invoices.empty? 
-  #   render json: Item.destroy(params[:id])
-  # render json: Invoice.destroy(params[:id])
-  # end
-  
+  def min_price
+
+  end
+
+  def max_price
+
+  end
+
+
+
 
   private 
   def item_params
