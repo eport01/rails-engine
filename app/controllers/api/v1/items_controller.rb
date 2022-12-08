@@ -34,9 +34,6 @@ class Api::V1::ItemsController < ApplicationController
 
   def find_all 
     params_variables
-    # name = params[:name]
-    # min_price = params[:min_price]
-    # max_price = params[:max_price]
 
     if @min_price && @name || @max_price && @name || @max_price && @min_price
       render json: {error: "Error!"}, status: 400 
@@ -66,7 +63,7 @@ class Api::V1::ItemsController < ApplicationController
   def items_above_price(params_variable)
     min_price = params[:min_price]
     if min_price.to_i > 0 
-      items = Item.where("unit_price > ?", "#{min_price}")
+      items= Item.above(min_price)
       render json: ItemSerializer.new(items)
     else
       render json: {errors: "Error!"}, status: 400 
@@ -76,7 +73,7 @@ class Api::V1::ItemsController < ApplicationController
   def items_below_price(params_variable)
     max_price = params[:max_price]
     if max_price.to_i > 0
-      items = Item.where("unit_price < ?", "#{max_price}")
+      items = Item.below(max_price)
       render json: ItemSerializer.new(items)
     else
       render json: {errors: "Error!"}, status: 400 
@@ -85,7 +82,7 @@ class Api::V1::ItemsController < ApplicationController
 
   def items_by_name(params_variable)
     name = params[:name]
-    items = Item.where("name ILIKE ?", "%#{name}%")
+    items = Item.find_by_name(name)
     if items != nil 
       render json: ItemSerializer.new(items)
     else
