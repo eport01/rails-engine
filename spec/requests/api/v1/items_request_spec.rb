@@ -59,7 +59,7 @@ describe "Items API endpoints" do
 
     end
 
-    it 'edge case, string id returns 404' do 
+    it 'edge case, string id converted to integer' do 
       item = create(:item, id: "3")
       expect(item.id).to eq(3)
 
@@ -143,7 +143,7 @@ describe "Items API endpoints" do
     end
   end
 
-  
+  describe 'destroy api/v1/items/item_id' do 
     it "can destroy an item" do 
       item = create(:item)
       expect(Item.count).to eq(1)
@@ -154,53 +154,60 @@ describe "Items API endpoints" do
       expect(Item.count).to eq(0)
       expect{Item.find(item.id)}.to raise_error(ActiveRecord::RecordNotFound)
     end
-
-  it "destroys any invoice if the deleted item was the only item on that invoice" do 
-    merchant = create(:merchant) 
-    @item1 = create(:item)
-    @item2 = create(:item)
-
-
-    @emily = Customer.create!(first_name: "Emily", last_name: "Port")
-    @invoice1 = Invoice.create!(merchant_id: merchant.id, status: 1, customer_id: @emily.id, created_at: "2022-11-01 11:00:00 UTC")
-    @invoice2 = Invoice.create!(merchant_id: merchant.id, status: 1, customer_id: @emily.id, created_at: "2022-11-02 11:00:00 UTC")
-    @invoice_item1 = InvoiceItem.create!(quantity: 1, unit_price: 5000, item_id: @item1.id, invoice_id: @invoice1.id)
-    @invoice_item2 = InvoiceItem.create!(quantity: 1, unit_price: 5000, item_id: @item1.id, invoice_id: @invoice2.id)
-    @invoice_item3 = InvoiceItem.create!(quantity: 1, unit_price: 5000, item_id: @item2.id, invoice_id: @invoice2.id)
-    
-    expect(Item.count).to eq(2)
-    expect(@invoice1.items).to eq([@item1])
-    expect(@invoice2.items).to eq([@item1, @item2])
-
-
-    delete "/api/v1/items/#{@item1.id}"
-
-    expect{Item.find(@item1.id)}.to raise_error(ActiveRecord::RecordNotFound)
-
-    expect{Invoice.find(@invoice1.id)}.to raise_error(ActiveRecord::RecordNotFound)
-
-  end
-
-  it 'returns a 404 response if no item is found' do 
-
-  end
-
-  it 'can return an items merchant based on an item id' do 
-    merchant = create(:merchant) 
-    create_list(:item, 3, merchant: merchant)
-    item = Item.last 
-    get "/api/v1/items/#{item.id}/merchant"
-
-    items_merchant = JSON.parse(response.body, symbolize_names: true)[:data]
-
-    expect(response).to be_successful
-    expect(items_merchant).to have_key(:id)
-    expect(items_merchant[:id].to_i).to eq(merchant.id)
-    expect(items_merchant[:attributes]).to have_key(:name)
-    expect(items_merchant[:attributes][:name]).to be_a(String)
-  end
-
+    it "destroys any invoice if the deleted item was the only item on that invoice" do 
+      merchant = create(:merchant) 
+      @item1 = create(:item)
+      @item2 = create(:item)
   
+  
+      @emily = Customer.create!(first_name: "Emily", last_name: "Port")
+      @invoice1 = Invoice.create!(merchant_id: merchant.id, status: 1, customer_id: @emily.id, created_at: "2022-11-01 11:00:00 UTC")
+      @invoice2 = Invoice.create!(merchant_id: merchant.id, status: 1, customer_id: @emily.id, created_at: "2022-11-02 11:00:00 UTC")
+      @invoice_item1 = InvoiceItem.create!(quantity: 1, unit_price: 5000, item_id: @item1.id, invoice_id: @invoice1.id)
+      @invoice_item2 = InvoiceItem.create!(quantity: 1, unit_price: 5000, item_id: @item1.id, invoice_id: @invoice2.id)
+      @invoice_item3 = InvoiceItem.create!(quantity: 1, unit_price: 5000, item_id: @item2.id, invoice_id: @invoice2.id)
+      
+      expect(Item.count).to eq(2)
+      expect(@invoice1.items).to eq([@item1])
+      expect(@invoice2.items).to eq([@item1, @item2])
+  
+  
+      delete "/api/v1/items/#{@item1.id}"
+  
+      expect{Item.find(@item1.id)}.to raise_error(ActiveRecord::RecordNotFound)
+  
+      expect{Invoice.find(@invoice1.id)}.to raise_error(ActiveRecord::RecordNotFound)
+  
+    end
+  end
 
+  describe 'get /api/v1/items/item_id/merchant' do 
+    it 'can return an items merchant based on an item id' do 
+      merchant = create(:merchant) 
+      create_list(:item, 3, merchant: merchant)
+      item = Item.last 
+      get "/api/v1/items/#{item.id}/merchant"
+
+      items_merchant = JSON.parse(response.body, symbolize_names: true)[:data]
+
+      expect(response).to be_successful
+      expect(items_merchant).to have_key(:id)
+      expect(items_merchant[:id].to_i).to eq(merchant.id)
+      expect(items_merchant[:attributes]).to have_key(:name)
+      expect(items_merchant[:attributes][:name]).to be_a(String)
+    end
+
+    it 'bad integer returns 404' do 
+      merchant = create(:merchant, id: 1)
+      item = create(:item, id: 2)
+      get "/api/v1/items/#{4}/merchant"
+
+      expect(response).to have_http_status 404
+
+
+
+
+    end
+  end
 
 end
