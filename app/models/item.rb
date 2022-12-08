@@ -12,13 +12,16 @@ class Item < ApplicationRecord
     end
   end
 
-  def items_above_price(min_price) 
-    Item.where("unit_price > ?", "#{min_price}}")  
+  def self.below(max_price)
+    Item.where("unit_price < ?", "#{max_price}")
   end
 
-  def items_below_price(max_price)
-    Item.where("unit_price < ?", "#{max_price}}")  
+  def self.above(min_price)
+    Item.where("unit_price > ?", "#{min_price}")
   end
 
+  def self.find_by_name(name)
+    Item.where("name ILIKE ?", "%#{name}%")
+  end
 
 end

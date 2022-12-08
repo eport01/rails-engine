@@ -1,3 +1,0 @@
-class FindMerchantController < ApplicationController
-  
-end
