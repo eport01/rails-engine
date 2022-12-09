@@ -27,7 +27,7 @@ describe 'unrestful routes, find all items by name fragment' do
     get "/api/v1/items/find_all?name=#{"j"}"
     item = JSON.parse(response.body, symbolize_names: true)
     expect(response).to have_http_status 200
-    expect(item[:data]).to eq([])
+    expect(item[:data][0][:error]).to eq([])
 
   end
 end
@@ -121,6 +121,14 @@ describe 'find all items edge cases' do
     get "/api/v1/items/find_all?name="
     expect(response).to have_http_status 400
   end
+
+  it 'negative max price gives 404 status' do 
+    get "/api/v1/items/find_all?max_price=#{-20.00}"
+    expect(response).to have_http_status(400)
+    bad_response = JSON.parse(response.body, symbolize_names: true)
+    expect(bad_response[:errors]).to eq("Error!")
+  end
+
 end
 
 

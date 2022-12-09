@@ -7,7 +7,7 @@ class Api::V1::ItemsController < ApplicationController
     if Item.exists?(params[:id])
       render json: ItemSerializer.new(Item.find(params[:id]))
     else
-      render json: {error: "no item id"}, status: 404
+      render json: {error: "bad item id"}, status: 404
     end
   end
 
@@ -24,11 +24,11 @@ class Api::V1::ItemsController < ApplicationController
   end
 
   def destroy 
-    @item = Item.find(params[:id])
-    if @item
+    # @item = Item.find(params[:id])
+    if Item.exists?(params[:id])
       render json: Item.destroy(params[:id])
     else
-      render json: {error: "no item id"}, status: 404
+      render json: {error: "bad item id"}, status: 404
     end
   end  
 
@@ -83,7 +83,7 @@ class Api::V1::ItemsController < ApplicationController
   def items_by_name(params_variable)
     name = params[:name]
     items = Item.find_by_name(name)
-    if items != nil 
+    if items != nil || items != []
       render json: ItemSerializer.new(items)
     else
       render json: {data: [error: items]}, status: 200 

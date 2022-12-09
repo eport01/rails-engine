@@ -60,8 +60,11 @@ describe "Items API endpoints" do
     end
 
     it 'edge case, string id converted to integer' do 
-      item = create(:item, id: "3")
-      expect(item.id).to eq(3)
+      get "/api/v1/items/3"
+      expect(response).to have_http_status 404
+      errors = JSON.parse(response.body, symbolize_names: true)
+
+      expect(errors[:error]).to eq("bad item id")
 
     end
   end
@@ -183,6 +186,14 @@ describe "Items API endpoints" do
   
       expect{Invoice.find(@invoice1.id)}.to raise_error(ActiveRecord::RecordNotFound)
   
+    end
+
+    it 'returns 404 status if bad id' do 
+      delete "/api/v1/items/3"
+      expect(response).to have_http_status 404
+      errors = JSON.parse(response.body, symbolize_names: true)
+
+      expect(errors[:error]).to eq("bad item id")
     end
   end
 
