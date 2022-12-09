@@ -16,10 +16,10 @@ class Api::V1::ItemsController < ApplicationController
   end
 
   def update 
-    if Item.update(params[:id], item_params).save 
+    if Item.exists?(params[:id]) && Item.update(params[:id], item_params).save 
       render json: ItemSerializer.new(Item.update(params[:id], item_params))
     else
-      render json: {error: "unable to update"}, status: 400
+      render json: {error: "unable to update"}, status: 404
     end
   end
 

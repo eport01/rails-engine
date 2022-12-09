@@ -132,14 +132,19 @@ describe "Items API endpoints" do
     end
 
     it 'edge case, string id returns a 404' do 
-      item = create(:item, id: "3")
+      put "/api/v1/items/#{"pizza"}"
+      expect(response).to have_http_status 404
+      errors = JSON.parse(response.body, symbolize_names: true)
 
-      expect(item.id).to eq(3)
+      expect(errors[:error]).to eq("unable to update")
     end
 
     it 'sad path, bad integer id returns 404' do 
-      get "/api/v1/items/3"
+      put "/api/v1/items/3"
       expect(response).to have_http_status 404
+      errors = JSON.parse(response.body, symbolize_names: true)
+
+      expect(errors[:error]).to eq("unable to update")
     end
   end
 
