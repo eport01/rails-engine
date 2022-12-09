@@ -85,8 +85,8 @@ class Api::V1::ItemsController < ApplicationController
     items = Item.find_by_name(name)
     if items != nil || items != []
       render json: ItemSerializer.new(items)
-    else
-      render json: {data: [error: items]}, status: 200 
+    # else
+    #   render json: {data: [error: items]}, status: 200 
     end
   end
 end
