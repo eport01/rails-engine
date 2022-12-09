@@ -27,7 +27,7 @@ describe 'unrestful routes, find all items by name fragment' do
     get "/api/v1/items/find_all?name=#{"j"}"
     item = JSON.parse(response.body, symbolize_names: true)
     expect(response).to have_http_status 200
-    expect(item[:data][0][:error]).to eq([])
+    expect(item[:data]).to eq([])
 
   end
 end
