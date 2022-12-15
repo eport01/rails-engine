@@ -18,6 +18,7 @@ class Api::V1::MerchantsController < ApplicationController
       if merchant != nil 
         render json: MerchantSerializer.new(merchant)
       else
+        merchant = []
         render json: {data: {error: merchant}}, status: 200 
       end
     else

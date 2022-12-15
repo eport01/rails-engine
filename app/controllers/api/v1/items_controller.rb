@@ -24,7 +24,6 @@ class Api::V1::ItemsController < ApplicationController
   end
 
   def destroy 
-    # @item = Item.find(params[:id])
     if Item.exists?(params[:id])
       render json: Item.destroy(params[:id])
     else
@@ -85,8 +84,6 @@ class Api::V1::ItemsController < ApplicationController
     items = Item.find_by_name(name)
     if items != nil || items != []
       render json: ItemSerializer.new(items)
-    # else
-    #   render json: {data: [error: items]}, status: 200 
     end
   end
 end
